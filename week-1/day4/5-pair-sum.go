@@ -6,6 +6,27 @@ type Info struct {
 	index, occurrence int
 }
 
+func PairSumSorted(arr []int, target int) []int {
+	low := 0
+	high := len(arr) - 1
+	sum := arr[low] + arr[high]
+
+	for low <= high && sum != target {
+		if sum < target {
+			low++
+		} else {
+			high--
+		}
+		sum = arr[low] + arr[high]
+	}
+
+	// No pair found
+	if low > high {
+		return []int{}
+	}
+	return []int{low, high}
+}
+
 func PairSum(arr []int, target int) []int {
 	mapping := make(map[int]*Info)
 
@@ -40,13 +61,15 @@ func PairSum(arr []int, target int) []int {
 }
 
 func main() {
-	fmt.Println(PairSum([]int{1, 2, 3, 4, 6}, 6)) // [1, 3]
-
-	fmt.Println(PairSum([]int{2, 5, 9, 11}, 11)) // [0, 2]
-
-	fmt.Println(PairSum([]int{1, 3, 5, 7}, 12)) // [2, 3]
-
+	fmt.Println(PairSum([]int{1, 2, 3, 4, 6}, 6))  // [1, 3]
+	fmt.Println(PairSum([]int{2, 5, 9, 11}, 11))   // [0, 2]
+	fmt.Println(PairSum([]int{1, 3, 5, 7}, 12))    // [2, 3]
 	fmt.Println(PairSum([]int{1, 4, 6, 7, 8}, 10)) // [1, 2]
+	fmt.Println(PairSum([]int{1, 5, 6, 7}, 6))     // [0, 1]
 
-	fmt.Println(PairSum([]int{1, 5, 6, 7}, 6)) // [0, 1]
+	fmt.Println(PairSumSorted([]int{1, 2, 3, 4, 6}, 6))  // [1, 3]
+	fmt.Println(PairSumSorted([]int{2, 5, 9, 11}, 11))   // [0, 2]
+	fmt.Println(PairSumSorted([]int{1, 3, 5, 7}, 12))    // [2, 3]
+	fmt.Println(PairSumSorted([]int{1, 4, 6, 7, 8}, 10)) // [1, 2]
+	fmt.Println(PairSumSorted([]int{1, 5, 6, 7}, 6))     // [0, 1]
 }
