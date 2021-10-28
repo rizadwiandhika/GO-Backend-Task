@@ -1,39 +1,33 @@
 package main
 
-var A int
-var B int
-var C int
+import "fmt"
 
-func df(x float64) float64 {
-	a := float64(A)
-	return 3*x*x - 2*a*x + 0.5*a*a
+func eq1(x, y, z, a int) bool {
+	return x+y+z == a
 }
-
-func f(x float64) float64 {
-	a := float64(A)
-	b := float64(B)
-	return x*x*x - a*x*x + 0.5*a*a*x - b
+func eq2(x, y, z, b int) bool {
+	return x*y*z == b
 }
-
-func findRootNewton() float64 {
-	iteration := 100
-	root := 100.0
-
-	for i := 0; i < iteration; i++ {
-		root = root - f(root)/df(root)
-	}
-
-	return root
+func eq3(x, y, z, c int) bool {
+	return x*x+y*y+z*z == c
+}
+func isSatisfyAllEquation(x, y, z, a, b, c int) bool {
+	return eq1(x, y, z, a) && eq2(x, y, z, b) && eq3(x, y, z, c)
 }
 
 func simpleEquation(a int, b int, c int) {
-	A = a
-	B = b
-	C = c
+	for x := 1; x <= 10000; x++ {
+		for y := 1; y <= 10000; y++ {
+			for z := 1; z <= 10000; z++ {
+				if isSatisfyAllEquation(x, y, z, a, b, c) {
+					fmt.Println(x, y, z)
+					return
+				}
+			}
+		}
+	}
 
-	x := findRootNewton()
-	y := ...
-	c := ...
+	fmt.Println("no solution")
 }
 
 func main() {
