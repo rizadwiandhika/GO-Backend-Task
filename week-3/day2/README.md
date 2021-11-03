@@ -4,11 +4,13 @@
 ![ERD](./ERD.jpg)
 
 ### Query:
+**Soal: Create database alta_online_shop.**
 ```
---  Soa: Create database alta_online_shop.
 CREATE DATABASE alta_online_shop;
+```
 
--- Soal:  Implementasikanlah menjadi table pada MySQL
+**Soal:  Implementasikanlah ERD menjadi table pada MySQL**
+```
 -- create table users
 CREATE TABLE users (
 	id_user varchar(32) PRIMARY KEY,
@@ -84,27 +86,35 @@ CREATE TABLE detail_transactions (
   CONSTRAINT fk_detail_transactions_transactions FOREIGN KEY (id_transaction) REFERENCES transactions (id_transaction),
   CONSTRAINT fk_detail_transactions_products FOREIGN KEY (id_product) REFERENCES products (id_product)
 );
+```
 
-
--- Soal: Create tabel kurir dengan field id, name, created_at, updated_at.
+**Soal: Create tabel kurir dengan field id, name, created_at, updated_at.**
+```
 CREATE TABLE kurir (
 	id varchar(32) PRIMARY KEY,
 	name varchar(32),
   created_at timestamp DEFAULT CURRENT_TIMESTAMP,
   updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+```
 
--- Soal: Tambahkan ongkos_dasar column di tabel kurir.
+**Soal: Tambahkan ongkos_dasar column di tabel kurir.**
+```
 ALTER TABLE kurir ADD ongkos_dasar double;
+```
 
--- Soal: Rename tabel kurir menjadi shipping.
+**Soal: Rename tabel kurir menjadi shipping.**
+```
 ALTER TABLE kurir RENAME TO shipping;
+```
 
--- Soal: Hapus / Drop tabel shipping karena ternyata tidak dibutuhkan.
+**Soal: Hapus / Drop tabel shipping karena ternyata tidak dibutuhkan.**
+```
 DROP TABLE shipping;
+```
 
-
--- Soal: Silahkan menambahkan entity baru dengan relation 1-to-1, 1-to-many, many-to-many. Seperti:
+**Soal: Silahkan menambahkan entity baru dengan relation 1-to-1, 1-to-many, many-to-many. Seperti:**
+```
 -- 1-to-1: payment method description.
 CREATE TABLE descriptions (
 	id_descriptions varchar(32) PRIMARY KEY,
