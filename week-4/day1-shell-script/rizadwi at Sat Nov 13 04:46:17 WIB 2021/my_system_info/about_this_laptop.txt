@@ -1,0 +1,2 @@
+My username: rizadwi
+With host: Darwin Rizas-MacBook-Air.local 17.7.0 Darwin Kernel Version 17.7.0: Sun Dec  1 19:19:56 PST 2019; root:xnu-4570.71.63~1/RELEASE_X86_64 x86_64
